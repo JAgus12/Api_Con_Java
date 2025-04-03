@@ -2,6 +2,7 @@ package api.rest.app.biblioteca.entities;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -12,16 +13,24 @@ public class Usuario {
 
     @Id
     private String usuario;
+    @Column(nullable = false)
     private String contraseña;
+    @Column(nullable = false,length = 55)
     private String nombre;
+    @Column(nullable = false, length = 65)
     private String apellido1;
+    @Column(nullable = false,length = 65)
     private String apellido2;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false,length = 9)
     private Integer telefono;
+    @Column(nullable = false)
     private LocalDate fechaNacimiento;
+    @Column(nullable = false)
     private LocalDate fechaAlta;
-    private String Rol;
-    private boolean activo;
+    private String rol="usuario";
+    private boolean activo=true;
 
     
     public Usuario() {
@@ -38,7 +47,7 @@ public class Usuario {
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaAlta = fechaAlta;
-        Rol = rol;
+        this.rol = rol;
         this.activo = activo;
     }
 
@@ -98,12 +107,13 @@ public class Usuario {
         this.fechaAlta = fechaAlta;
     }
     public String getRol() {
-        return Rol;
+        return rol;
     }
+
     public void setRol(String rol) {
-        Rol = rol;
+        this.rol = rol;
     }
-    public boolean isActivo() {
+    public boolean getActivo() {
         return activo;
     }
     public void setActivo(boolean activo) {
