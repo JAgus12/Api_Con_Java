@@ -1,4 +1,4 @@
-INSERT INTO usuarios (usuario, contraseña, nombre, apellido1, apellido2, email, telefono, fecha_nacimiento, fecha_alta, rol, activo)
+INSERT INTO usuarios (usuario, password, nombre, apellido1, apellido2, email, telefono, fecha_nacimiento, fecha_alta, rol, activo)
 VALUES
 ('agus', 'contraseña_segura', 'Agustin', 'Gonzalez', 'Gómez', 'agustin@example.com', 123456789, '2000-05-15', '2024-04-03', 'admin', 1),
 ('marta', 'marta_secreta', 'Marta', 'Lopez', 'Perez', 'marta@example.com', 987654321, '1995-02-10', '2023-09-12', 'usuario', 0),

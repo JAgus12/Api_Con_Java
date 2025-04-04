@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuarios")
@@ -14,7 +16,8 @@ public class Usuario {
     @Id
     private String usuario;
     @Column(nullable = false)
-    private String contraseña;
+    @Size(min = 8,message = "La contraseña debe tener minimo 8 caracteres")
+    private String password;
     @Column(nullable = false,length = 55)
     private String nombre;
     @Column(nullable = false, length = 65)
@@ -24,7 +27,7 @@ public class Usuario {
     @Column(nullable = false)
     private String email;
     @Column(nullable = false,length = 9)
-    private Integer telefono;
+    private String telefono;
     @Column(nullable = false)
     private LocalDate fechaNacimiento;
     @Column(nullable = false)
@@ -37,9 +40,9 @@ public class Usuario {
     }
 
     public Usuario(String usuario, String contraseña, String nombre, String apellido1, String apellido2, String email,
-            Integer telefono, LocalDate fechaNacimiento, LocalDate fechaAlta, String rol, boolean activo) {
+            String telefono, LocalDate fechaNacimiento, LocalDate fechaAlta, String rol, boolean activo) {
         this.usuario = usuario;
-        this.contraseña = contraseña;
+        this.password = contraseña;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -59,10 +62,10 @@ public class Usuario {
         this.usuario = usuario;
     }
     public String getContraseña() {
-        return contraseña;
+        return password;
     }
     public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+        this.password = contraseña;
     }
     public String getNombre() {
         return nombre;
@@ -88,10 +91,10 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     public LocalDate getFechaNacimiento() {
@@ -118,6 +121,12 @@ public class Usuario {
     }
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+    @PrePersist
+    public void PrePersist(){
+        if(fechaAlta==null){
+            fechaAlta=LocalDate.now();
+        }
     }
 
     
