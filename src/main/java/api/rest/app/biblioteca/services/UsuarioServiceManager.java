@@ -43,7 +43,7 @@ public class UsuarioServiceManager implements UsuarioService {
         usuarioModificar.setNombre(user.getNombre());
         usuarioModificar.setApellido1(user.getApellido1());
         usuarioModificar.setApellido2(user.getApellido2());
-        usuarioModificar.setContraseña(user.getContraseña());
+        usuarioModificar.setPassword(user.getPassword());
         usuarioModificar.setEmail(user.getEmail());
         usuarioModificar.setFechaNacimiento(user.getFechaNacimiento());
         usuarioModificar.setFechaAlta(user.getFechaAlta());

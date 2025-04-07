@@ -1,0 +1,14 @@
+package api.rest.app.biblioteca.services;
+
+import java.util.List;
+
+import api.rest.app.biblioteca.entities.Direccion;
+
+public interface DireccionService {
+
+    List<Direccion> findAll();
+    Direccion findById(Long direccion_id);
+    Direccion save(Direccion direccion);
+    Direccion deleteById(Long direccion_id);
+    Direccion update(Long direccion_id,Direccion direccion);
+}

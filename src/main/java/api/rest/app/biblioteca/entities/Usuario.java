@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
@@ -34,8 +36,11 @@ public class Usuario {
     private LocalDate fechaAlta;
     private String rol="usuario";
     private boolean activo=true;
+    @ManyToOne
+    @JoinColumn(name = "direccion_id")
+    private Direccion direccion;
 
-    
+
     public Usuario() {
     }
 
@@ -60,12 +65,6 @@ public class Usuario {
     }
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
-    public String getContraseña() {
-        return password;
-    }
-    public void setContraseña(String contraseña) {
-        this.password = contraseña;
     }
     public String getNombre() {
         return nombre;
@@ -121,6 +120,22 @@ public class Usuario {
     }
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+        
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
     }
     @PrePersist
     public void PrePersist(){
