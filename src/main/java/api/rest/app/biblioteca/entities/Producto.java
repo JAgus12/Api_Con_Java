@@ -1,34 +1,31 @@
 package api.rest.app.biblioteca.entities;
 
-import jakarta.persistence.Id;
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class Producto {
-
-    @Id
-    protected Long id;
     protected String titulo;
     protected Integer unidades;
     protected String descripcion;
+    @CreationTimestamp
+    protected Timestamp fechaAlta;
 
+   
     public Producto() {
     }
 
-    public Producto(Long id, String titulo, Integer unidades, String descripcion) {
-        this.id = id;
+    
+    public Producto(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta) {
         this.titulo = titulo;
         this.unidades = unidades;
         this.descripcion = descripcion;
+        this.fechaAlta = fechaAlta;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitulo() {
         return titulo;
@@ -53,7 +50,18 @@ public abstract class Producto {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+
+    public Timestamp getFechaAlta() {
+        return fechaAlta;
+    }
+
+
+    public void setFechaAlta(Timestamp fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
     
 
+    
     
 }

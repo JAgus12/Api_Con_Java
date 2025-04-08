@@ -1,6 +1,9 @@
 package api.rest.app.biblioteca.entities;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,7 +36,8 @@ public class Usuario {
     @Column(nullable = false)
     private LocalDate fechaNacimiento;
     @Column(nullable = false)
-    private LocalDate fechaAlta;
+    @CreationTimestamp
+    private Timestamp fechaAlta;
     private String rol="usuario";
     private boolean activo=true;
     @ManyToOne
@@ -45,7 +49,7 @@ public class Usuario {
     }
 
     public Usuario(String usuario, String contraseña, String nombre, String apellido1, String apellido2, String email,
-            String telefono, LocalDate fechaNacimiento, LocalDate fechaAlta, String rol, boolean activo) {
+            String telefono, LocalDate fechaNacimiento, Timestamp fechaAlta, String rol, boolean activo) {
         this.usuario = usuario;
         this.password = contraseña;
         this.nombre = nombre;
@@ -102,10 +106,10 @@ public class Usuario {
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    public LocalDate getFechaAlta() {
+    public Timestamp getFechaAlta() {
         return fechaAlta;
     }
-    public void setFechaAlta(LocalDate fechaAlta) {
+    public void setFechaAlta(Timestamp fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
     public String getRol() {
@@ -136,12 +140,6 @@ public class Usuario {
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
-    }
-    @PrePersist
-    public void PrePersist(){
-        if(fechaAlta==null){
-            fechaAlta=LocalDate.now();
-        }
     }
 
     
