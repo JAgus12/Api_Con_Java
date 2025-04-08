@@ -13,17 +13,20 @@ public abstract class Producto {
     protected String descripcion;
     @CreationTimestamp
     protected Timestamp fechaAlta;
+    @CreationTimestamp
+    protected Timestamp fechaModificacion;
 
    
     public Producto() {
     }
 
-    
-    public Producto(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta) {
+    public Producto(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta,
+            Timestamp fechaModificacion) {
         this.titulo = titulo;
         this.unidades = unidades;
         this.descripcion = descripcion;
         this.fechaAlta = fechaAlta;
+        this.fechaModificacion = fechaModificacion;
     }
 
 
@@ -59,6 +62,19 @@ public abstract class Producto {
 
     public void setFechaAlta(Timestamp fechaAlta) {
         this.fechaAlta = fechaAlta;
+    }
+
+
+    public Timestamp getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+
+
+
+
+    public void setFechaModificacion(Timestamp fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
     }
     
 

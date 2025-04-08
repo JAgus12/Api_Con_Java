@@ -23,14 +23,12 @@ public class Revista extends Producto {
     public Revista() {
     }
 
-
-    public Revista(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta, Long revista_id,
-            String editorial) {
-        super(titulo, unidades, descripcion, fechaAlta);
+    public Revista(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta,
+            Timestamp fechaModificacion, Long revista_id, String editorial) {
+        super(titulo, unidades, descripcion, fechaAlta, fechaModificacion);
         this.revista_id = revista_id;
         this.editorial = editorial;
     }
-
 
     public String getEditorial() {
         return editorial;

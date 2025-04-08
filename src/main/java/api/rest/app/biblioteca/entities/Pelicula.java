@@ -28,9 +28,10 @@ public class Pelicula extends Producto {
 
     }
 
-    public Pelicula(String titulo, Integer unidades, String descripcion, java.sql.Timestamp fechaAlta, Long pelicula_id,
-            String director, String duracion, String productor) {
-        super(titulo, unidades, descripcion, fechaAlta);
+    public Pelicula(String titulo, Integer unidades, String descripcion, java.sql.Timestamp fechaAlta,
+            java.sql.Timestamp fechaModificacion, Long pelicula_id, String director, String duracion,
+            String productor) {
+        super(titulo, unidades, descripcion, fechaAlta, fechaModificacion);
         this.pelicula_id = pelicula_id;
         this.director = director;
         this.duracion = duracion;

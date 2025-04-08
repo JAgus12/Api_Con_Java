@@ -18,3 +18,11 @@ INSERT INTO usuarios (
 ) VALUES (
     1, '2025-04-07', '1988-05-15', 1, '654321987', 'Juan', 'Pérez', 'Gómez', 'juan.perez@example.com', 'hashed_password_1', 'cliente', 'juanperez'
 );
+
+INSERT INTO libros (unidades, editorial, autor, descripcion, isbn, titulo, fecha_alta)
+VALUES 
+(5, 'Planeta', 'Carlos Ruiz Zafón', 'Una novela mágica ambientada en la Barcelona de la posguerra.', '9788408072801', 'La Sombra del Viento', CURRENT_TIMESTAMP),
+(3, 'Anagrama', 'Roberto Bolaño', 'Un viaje literario por el misterio de los escritores desaparecidos.', '9788433966790', 'Los Detectives Salvajes', CURRENT_TIMESTAMP),
+(7, 'Alfaguara', 'Gabriel García Márquez', 'Una historia inolvidable sobre el amor eterno y el paso del tiempo.', '9788420471839', 'El Amor en los Tiempos del Cólera', CURRENT_TIMESTAMP),
+(10, 'Penguin Random House', 'George Orwell', 'Distopía sobre un régimen totalitario que vigila todos tus movimientos.', '9780451524935', '1984', CURRENT_TIMESTAMP),
+(4, 'Debolsillo', 'J.R.R. Tolkien', 'La gran aventura de Frodo para destruir el Anillo Único.', '9788497593793', 'El Señor de los Anillos', CURRENT_TIMESTAMP);

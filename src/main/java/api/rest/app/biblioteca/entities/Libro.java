@@ -21,14 +21,13 @@ public class Libro extends Producto {
     public Libro() {
     }
 
-    public Libro(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta, String isbn, String autor,
-            String editorial) {
-        super(titulo, unidades, descripcion, fechaAlta);
+    public Libro(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta, Timestamp fechaModificacion,
+            String isbn, String autor, String editorial) {
+        super(titulo, unidades, descripcion, fechaAlta, fechaModificacion);
         this.isbn = isbn;
         this.autor = autor;
         this.editorial = editorial;
     }
-
 
     public String getIsbn() {
         return isbn;
