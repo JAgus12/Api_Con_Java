@@ -5,13 +5,11 @@ import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "libros")
 public class Libro extends Producto {
-    @Id
     private String isbn;
     @Column(nullable = false,length = 50)
     private String autor;
@@ -21,9 +19,11 @@ public class Libro extends Producto {
     public Libro() {
     }
 
-    public Libro(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta, Timestamp fechaModificacion,
-            String isbn, String autor, String editorial) {
-        super(titulo, unidades, descripcion, fechaAlta, fechaModificacion);
+
+    public Libro(String titulo, Integer unidades, String descripcion, String createdBy, String updateBy,
+            Timestamp fechaAlta, Timestamp fechaModificacion, Long producto_id, String tipo, String isbn, String autor,
+            String editorial) {
+        super(titulo, unidades, descripcion, createdBy, updateBy, fechaAlta, fechaModificacion, producto_id, tipo);
         this.isbn = isbn;
         this.autor = autor;
         this.editorial = editorial;

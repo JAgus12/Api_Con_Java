@@ -1,21 +1,16 @@
 package api.rest.app.biblioteca.entities;
 
-import java.security.Timestamp;
+
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "peliculas")
 public class Pelicula extends Producto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long pelicula_id;
     @Column(nullable = false)
     private String director;
     @Column(nullable = false)
@@ -28,16 +23,15 @@ public class Pelicula extends Producto {
 
     }
 
-    public Pelicula(String titulo, Integer unidades, String descripcion, java.sql.Timestamp fechaAlta,
-            java.sql.Timestamp fechaModificacion, Long pelicula_id, String director, String duracion,
-            String productor) {
-        super(titulo, unidades, descripcion, fechaAlta, fechaModificacion);
-        this.pelicula_id = pelicula_id;
+
+    public Pelicula(String titulo, Integer unidades, String descripcion, String createdBy, String updateBy,
+            Timestamp fechaAlta, Timestamp fechaModificacion, Long producto_id, String tipo, String director,
+            String duracion, String productor) {
+        super(titulo, unidades, descripcion, createdBy, updateBy, fechaAlta, fechaModificacion, producto_id, tipo);
         this.director = director;
         this.duracion = duracion;
         this.productor = productor;
     }
-
 
     public String getDirector() {
         return director;

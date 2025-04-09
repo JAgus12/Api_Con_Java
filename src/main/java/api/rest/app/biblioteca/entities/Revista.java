@@ -1,6 +1,7 @@
 package api.rest.app.biblioteca.entities;
 
 
+
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
@@ -13,9 +14,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "revistas")
 public class Revista extends Producto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long revista_id;
     @Column(nullable = false)
     private String editorial;
     
@@ -23,12 +21,14 @@ public class Revista extends Producto {
     public Revista() {
     }
 
-    public Revista(String titulo, Integer unidades, String descripcion, Timestamp fechaAlta,
-            Timestamp fechaModificacion, Long revista_id, String editorial) {
-        super(titulo, unidades, descripcion, fechaAlta, fechaModificacion);
-        this.revista_id = revista_id;
+
+    public Revista(String titulo, Integer unidades, String descripcion, String createdBy, String updateBy,
+            Timestamp fechaAlta, Timestamp fechaModificacion, Long producto_id, String tipo, String editorial) {
+        super(titulo, unidades, descripcion, createdBy, updateBy, fechaAlta, fechaModificacion, producto_id, tipo);
         this.editorial = editorial;
     }
+
+
 
     public String getEditorial() {
         return editorial;
@@ -38,15 +38,6 @@ public class Revista extends Producto {
         this.editorial = editorial;
     }
 
-
-    public Long getRevista_id() {
-        return revista_id;
-    }
-
-
-    public void setRevista_id(Long revista_id) {
-        this.revista_id = revista_id;
-    }
 
     
 }

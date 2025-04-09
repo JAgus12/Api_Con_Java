@@ -10,7 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
@@ -40,10 +40,13 @@ public class Usuario {
     private Timestamp fechaAlta;
     private String rol="usuario";
     private boolean activo=true;
+
     @ManyToOne
     @JoinColumn(name = "direccion_id")
     private Direccion direccion;
 
+    @OneToOne(mappedBy = "usuario")
+    private Alquiler alquiler;
 
     public Usuario() {
     }

@@ -8,6 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
@@ -20,6 +23,14 @@ public class Alquiler {
     @CreationTimestamp
     private Timestamp fechaAlta;
     private Timestamp fechaFin;
+
+    @ManyToOne
+    @JoinColumn(name = "producto_id")
+    private Producto producto;
+
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     public Alquiler() {
     }
@@ -54,11 +65,20 @@ public class Alquiler {
         this.fechaFin = fechaFin;
     }
 
+    
     @PrePersist
     public void prePersist(){
         if(fechaAlta==null){
             fechaAlta=new Timestamp(System.currentTimeMillis());
         }
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
     
 }
