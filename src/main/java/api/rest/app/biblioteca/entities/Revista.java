@@ -1,14 +1,9 @@
 package api.rest.app.biblioteca.entities;
 
-
-
-import java.sql.Timestamp;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,9 +17,10 @@ public class Revista extends Producto {
     }
 
 
-    public Revista(String titulo, Integer unidades, String descripcion, String createdBy, String updateBy,
-            Timestamp fechaAlta, Timestamp fechaModificacion, Long producto_id, String tipo, String editorial) {
-        super(titulo, unidades, descripcion, createdBy, updateBy, fechaAlta, fechaModificacion, producto_id, tipo);
+
+    public Revista(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
+            List<Alquiler> alquileres, String editorial) {
+        super(producto_id, titulo, unidades, descripcion, tipo, alquileres);
         this.editorial = editorial;
     }
 

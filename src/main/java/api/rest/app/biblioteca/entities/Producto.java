@@ -15,28 +15,33 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "productos")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Producto extends BaseProducto {
+public abstract class Producto extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long producto_id;
+    protected Long producto_id;
+    protected String titulo;
+    protected Integer unidades;
+    protected String descripcion;
 
     private String tipo;
     @OneToMany(mappedBy = "producto")
-    private List<Alquiler> alquileres;
+    protected List<Alquiler> alquileres;
 
 
     public Producto() {
     }
 
 
-    public Producto(String titulo, Integer unidades, String descripcion, String createdBy, String updateBy,
-            Timestamp fechaAlta, Timestamp fechaModificacion, Long producto_id, String tipo) {
-        super(titulo, unidades, descripcion, createdBy, updateBy, fechaAlta, fechaModificacion);
+    public Producto(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
+            List<Alquiler> alquileres) {
         this.producto_id = producto_id;
+        this.titulo = titulo;
+        this.unidades = unidades;
+        this.descripcion = descripcion;
         this.tipo = tipo;
+        this.alquileres = alquileres;
     }
-
 
 
     public Long getProducto_id() {
@@ -69,6 +74,37 @@ public abstract class Producto extends BaseProducto {
         this.alquileres = alquileres;
     }
 
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+
+    public Integer getUnidades() {
+        return unidades;
+    }
+
+
+    public void setUnidades(Integer unidades) {
+        this.unidades = unidades;
+    }
+
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    
     
 
     

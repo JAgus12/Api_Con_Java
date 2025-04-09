@@ -1,7 +1,7 @@
 package api.rest.app.biblioteca.entities;
 
 
-import java.sql.Timestamp;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,14 +24,15 @@ public class Pelicula extends Producto {
     }
 
 
-    public Pelicula(String titulo, Integer unidades, String descripcion, String createdBy, String updateBy,
-            Timestamp fechaAlta, Timestamp fechaModificacion, Long producto_id, String tipo, String director,
-            String duracion, String productor) {
-        super(titulo, unidades, descripcion, createdBy, updateBy, fechaAlta, fechaModificacion, producto_id, tipo);
+    public Pelicula(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
+            List<Alquiler> alquileres, String director, String duracion, String productor) {
+        super(producto_id, titulo, unidades, descripcion, tipo, alquileres);
         this.director = director;
         this.duracion = duracion;
         this.productor = productor;
     }
+
+
 
     public String getDirector() {
         return director;

@@ -1,7 +1,7 @@
 package api.rest.app.biblioteca.entities;
 
 
-import java.sql.Timestamp;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,15 +19,15 @@ public class Libro extends Producto {
     public Libro() {
     }
 
-
-    public Libro(String titulo, Integer unidades, String descripcion, String createdBy, String updateBy,
-            Timestamp fechaAlta, Timestamp fechaModificacion, Long producto_id, String tipo, String isbn, String autor,
-            String editorial) {
-        super(titulo, unidades, descripcion, createdBy, updateBy, fechaAlta, fechaModificacion, producto_id, tipo);
+    public Libro(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
+            List<Alquiler> alquileres, String isbn, String autor, String editorial) {
+        super(producto_id, titulo, unidades, descripcion, tipo, alquileres);
         this.isbn = isbn;
         this.autor = autor;
         this.editorial = editorial;
     }
+
+
 
     public String getIsbn() {
         return isbn;
