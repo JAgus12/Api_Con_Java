@@ -18,9 +18,9 @@ public class LibroServiceManager implements LibroService {
 
 
     @Override
-    public Libro deleteById(String isbn) {
-        Libro libroBorrado=this.repository.findById(isbn).get();
-        this.repository.deleteById(isbn);
+    public Libro deleteById(Long id) {
+        Libro libroBorrado=this.repository.findById(id).get();
+        this.repository.deleteById(id);
         return libroBorrado;
     }
 
@@ -30,8 +30,8 @@ public class LibroServiceManager implements LibroService {
     }
 
     @Override
-    public Libro findById(String isbn) {
-        return this.repository.findById(isbn).get();
+    public Libro findById(Long id) {
+        return this.repository.findById(id).get();
     }
 
     @Override
@@ -40,8 +40,8 @@ public class LibroServiceManager implements LibroService {
     }
 
     @Override
-    public Libro update(String isbn, Libro libro) {
-        Libro libroModificar=this.repository.findById(isbn).get();
+    public Libro update(Long id, Libro libro) {
+        Libro libroModificar=this.repository.findById(id).get();
         libroModificar.setAutor(libro.getAutor());
         libroModificar.setDescripcion(libro.getDescripcion());
         libroModificar.setEditorial(libro.getEditorial());

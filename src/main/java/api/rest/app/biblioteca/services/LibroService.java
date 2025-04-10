@@ -7,8 +7,8 @@ import api.rest.app.biblioteca.entities.Libro;
 public interface LibroService {
 
     List<Libro> finAll();
-    Libro findById(String isbn);
+    Libro findById(Long id);
     Libro save(Libro libro);
-    Libro deleteById(String isbn);
-    Libro update(String isbn,Libro libro);
+    Libro deleteById(Long id);
+    Libro update(Long id,Libro libro);
 }

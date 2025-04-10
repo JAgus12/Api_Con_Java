@@ -11,12 +11,14 @@ import jakarta.persistence.Table;
 @Table(name = "peliculas")
 public class Pelicula extends Producto {
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 30)
     private String director;
-    @Column(nullable = false)
+    @Column(nullable = false,length = 20)
     private String duracion;
-    @Column(nullable = false)
+    @Column(nullable = false,length = 30)
     private String productor;
+    @Column(nullable = false,length = 40)
+    private String anho;
     
 
     public Pelicula() {
@@ -24,14 +26,15 @@ public class Pelicula extends Producto {
     }
 
 
+
     public Pelicula(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
-            List<Alquiler> alquileres, String director, String duracion, String productor) {
+            List<Alquiler> alquileres, String director, String duracion, String productor, String anho) {
         super(producto_id, titulo, unidades, descripcion, tipo, alquileres);
         this.director = director;
         this.duracion = duracion;
         this.productor = productor;
+        this.anho = anho;
     }
-
 
 
     public String getDirector() {
@@ -56,6 +59,18 @@ public class Pelicula extends Producto {
 
     public void setProductor(String productor) {
         this.productor = productor;
+    }
+
+
+
+    public String getAnho() {
+        return anho;
+    }
+
+
+
+    public void setAnho(String anho) {
+        this.anho = anho;
     }
 
     

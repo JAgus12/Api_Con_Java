@@ -3,6 +3,7 @@ package api.rest.app.biblioteca.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +30,10 @@ public class LibroController {
         return this.serviceManager.finAll();
     } 
 
-    @GetMapping("/{isbn}")
+    @GetMapping("/{id}")
     @Transactional(readOnly = true)
-    public Libro findLibro(@PathVariable String isbn){
-        return this.serviceManager.findById(isbn);
+    public Libro findLibro(@PathVariable Long id){
+        return this.serviceManager.findById(id);
     }
 
     @PostMapping()
@@ -41,15 +42,15 @@ public class LibroController {
         return this.serviceManager.save(libro);
     }
 
-    @DeleteMapping("/{isbn}")
+    @DeleteMapping("/{id}")
     @Transactional
-    public Libro deleteLibro(@PathVariable String isbn){
-        return this.serviceManager.deleteById(isbn);
+    public Libro deleteLibro(@PathVariable Long id){
+        return this.serviceManager.deleteById(id);
     }
 
-    @PutMapping("/{isbn}")
+    @PutMapping("/{id}")
     @Transactional
-    public Libro updateLibro(@PathVariable String isbn,@RequestBody Libro libro){
-        return this.serviceManager.update(isbn, libro);
+    public Libro updateLibro(@PathVariable Long id,@RequestBody Libro libro){
+        return this.serviceManager.update(id, libro);
     }
 }

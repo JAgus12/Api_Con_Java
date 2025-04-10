@@ -1,8 +1,8 @@
 package api.rest.app.biblioteca.entities;
 
-import java.sql.Timestamp;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,10 +20,14 @@ public abstract class Producto extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long producto_id;
+    @Column(nullable = false,length = 40)
     protected String titulo;
+    @Column(nullable = false,length = 15)
     protected Integer unidades;
+    @Column(length = 60)
     protected String descripcion;
 
+    @Column(nullable = false)
     private String tipo;
     @OneToMany(mappedBy = "producto")
     protected List<Alquiler> alquileres;
