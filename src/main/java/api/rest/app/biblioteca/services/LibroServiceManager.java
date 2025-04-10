@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.rest.app.biblioteca.entities.Libro;
+import api.rest.app.biblioteca.model.entity.Libro;
 import api.rest.app.biblioteca.repositories.LibroRepository;
 
 @Service

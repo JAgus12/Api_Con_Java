@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.rest.app.biblioteca.entities.Pelicula;
+import api.rest.app.biblioteca.model.entity.Pelicula;
 import api.rest.app.biblioteca.repositories.PeliculaRepository;
 
 @Service
@@ -40,7 +40,6 @@ public class PeliculaServiceManager implements PeliculaService {
     @Override
     public Pelicula update(Long producto_id, Pelicula pelicula) {
         Pelicula peliculaModificar = this.repository.findById(producto_id).get();
-        peliculaModificar.setAlquileres(pelicula.getAlquileres());
         peliculaModificar.setAnho(pelicula.getAnho());
         peliculaModificar.setCreatedBy(pelicula.getAnho());
         peliculaModificar.setDescripcion(pelicula.getDescripcion());

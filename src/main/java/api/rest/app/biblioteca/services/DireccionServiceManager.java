@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.rest.app.biblioteca.entities.Direccion;
+import api.rest.app.biblioteca.model.entity.Direccion;
 import api.rest.app.biblioteca.repositories.DireccionRepository;
 
 @Service

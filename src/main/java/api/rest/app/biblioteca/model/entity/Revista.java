@@ -1,6 +1,5 @@
-package api.rest.app.biblioteca.entities;
+package api.rest.app.biblioteca.model.entity;
 
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,8 +18,8 @@ public class Revista extends Producto {
 
 
     public Revista(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
-            List<Alquiler> alquileres, String editorial) {
-        super(producto_id, titulo, unidades, descripcion, tipo, alquileres);
+            String editorial) {
+        super(producto_id, titulo, unidades, descripcion, tipo);
         this.editorial = editorial;
     }
 

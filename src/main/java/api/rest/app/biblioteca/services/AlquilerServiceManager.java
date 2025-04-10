@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.rest.app.biblioteca.entities.Alquiler;
+import api.rest.app.biblioteca.model.entity.Alquiler;
 import api.rest.app.biblioteca.repositories.AlquilerRepository;
 
 @Service

@@ -2,7 +2,7 @@ package api.rest.app.biblioteca.services;
 
 import java.util.List;
 
-import api.rest.app.biblioteca.entities.Alquiler;
+import api.rest.app.biblioteca.model.entity.Alquiler;
 
 public interface AlquilerService {
 

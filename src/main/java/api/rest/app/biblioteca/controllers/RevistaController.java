@@ -2,7 +2,6 @@ package api.rest.app.biblioteca.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,43 +12,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import api.rest.app.biblioteca.model.entity.Pelicula;
-import api.rest.app.biblioteca.services.PeliculaServiceManager;
+import api.rest.app.biblioteca.model.entity.Revista;
+import api.rest.app.biblioteca.services.RevistaServiceManager;
 
 @RestController
-@RequestMapping("/api/peliculas")
-public class PeliculaController {
+@RequestMapping("/api/revistas")
+public class RevistaController {
 
-    @Autowired
-    private PeliculaServiceManager serviceManager;
+    private final RevistaServiceManager serviceManager;
+
+    public RevistaController(RevistaServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
+    }
 
     @GetMapping()
     @Transactional(readOnly = true)
-    public List<Pelicula> findAll(){
+    public List<Revista> findAllRevistas(){
         return this.serviceManager.findAll();
     }
 
     @GetMapping("/{producto_id}")
     @Transactional
-    public Pelicula findPelicula(@PathVariable Long producto_id){
+    public Revista findRevista(@PathVariable Long producto_id){
         return this.serviceManager.findById(producto_id);
     }
 
     @PostMapping()
     @Transactional
-    public Pelicula save(@RequestBody Pelicula pelicula){
-        return this.serviceManager.save(pelicula);
+    public Revista save(@RequestBody Revista revista){
+        return this.serviceManager.save(revista);
     }
 
     @DeleteMapping("/{producto_id}")
     @Transactional
-    public Pelicula deletePelicula(@PathVariable Long producto_id){
+    public Revista deleteRevista(@PathVariable Long producto_id){
         return this.serviceManager.deleteById(producto_id);
     }
 
     @PutMapping("/{producto_id}")
     @Transactional
-    public Pelicula updatePelicula(@PathVariable Long producto_id,@RequestBody Pelicula pelicula){
-        return this.serviceManager.update(producto_id, pelicula);
+    public Revista updateRevista(@PathVariable Long producto_id,@RequestBody Revista revista){
+        return this.serviceManager.update(producto_id, revista);
     }
 }

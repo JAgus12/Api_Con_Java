@@ -2,7 +2,7 @@ package api.rest.app.biblioteca.services;
 
 import java.util.List;
 
-import api.rest.app.biblioteca.entities.Usuario;
+import api.rest.app.biblioteca.model.entity.Usuario;
 
 public interface UsuarioService {
 
@@ -11,4 +11,5 @@ public interface UsuarioService {
     Usuario save(Usuario usuario);
     Usuario deleteById(String usuario);
     Usuario update(String usuario,Usuario user);
+    Boolean existsById(String usuario);
 }

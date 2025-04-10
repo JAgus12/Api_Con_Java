@@ -1,6 +1,5 @@
-package api.rest.app.biblioteca.entities;
+package api.rest.app.biblioteca.model.entity;
 
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,22 +27,19 @@ public abstract class Producto extends BaseEntity {
 
     @Column(nullable = false)
     private String tipo;
-    @OneToMany(mappedBy = "producto")
-    protected List<Alquiler> alquileres;
 
 
     public Producto() {
     }
 
 
-    public Producto(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
-            List<Alquiler> alquileres) {
+    public Producto(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo) {
         this.producto_id = producto_id;
         this.titulo = titulo;
         this.unidades = unidades;
         this.descripcion = descripcion;
         this.tipo = tipo;
-        this.alquileres = alquileres;
+
     }
 
 
@@ -68,15 +63,6 @@ public abstract class Producto extends BaseEntity {
         this.tipo = tipo;
     }
 
-
-    public List<Alquiler> getAlquileres() {
-        return alquileres;
-    }
-
-
-    public void setAlquileres(List<Alquiler> alquileres) {
-        this.alquileres = alquileres;
-    }
 
 
     public String getTitulo() {

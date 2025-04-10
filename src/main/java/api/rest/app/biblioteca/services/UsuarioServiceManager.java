@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.rest.app.biblioteca.entities.Usuario;
+import api.rest.app.biblioteca.model.entity.Usuario;
 import api.rest.app.biblioteca.repositories.UsuarioRepository;
 
 @Service
@@ -53,5 +53,12 @@ public class UsuarioServiceManager implements UsuarioService {
         return this.repository.save(usuarioModificar);
 
     }
+
+    @Override
+    public Boolean existsById(String usuario) {
+        return this.repository.existsById(usuario);
+    }
+
+    
 
 }

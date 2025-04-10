@@ -1,4 +1,4 @@
-package api.rest.app.biblioteca.entities;
+package api.rest.app.biblioteca.model.entity;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;

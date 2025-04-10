@@ -1,7 +1,6 @@
-package api.rest.app.biblioteca.entities;
+package api.rest.app.biblioteca.model.entity;
 
 
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,10 +25,9 @@ public class Pelicula extends Producto {
     }
 
 
-
-    public Pelicula(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
-            List<Alquiler> alquileres, String director, String duracion, String productor, String anho) {
-        super(producto_id, titulo, unidades, descripcion, tipo, alquileres);
+    public Pelicula(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo, String director,
+            String duracion, String productor, String anho) {
+        super(producto_id, titulo, unidades, descripcion, tipo);
         this.director = director;
         this.duracion = duracion;
         this.productor = productor;

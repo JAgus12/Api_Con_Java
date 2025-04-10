@@ -1,7 +1,5 @@
-package api.rest.app.biblioteca.entities;
+package api.rest.app.biblioteca.model.entity;
 
-
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,9 +17,11 @@ public class Libro extends Producto {
     public Libro() {
     }
 
-    public Libro(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo,
-            List<Alquiler> alquileres, String isbn, String autor, String editorial) {
-        super(producto_id, titulo, unidades, descripcion, tipo, alquileres);
+
+
+    public Libro(Long producto_id, String titulo, Integer unidades, String descripcion, String tipo, String isbn,
+            String autor, String editorial) {
+        super(producto_id, titulo, unidades, descripcion, tipo);
         this.isbn = isbn;
         this.autor = autor;
         this.editorial = editorial;
