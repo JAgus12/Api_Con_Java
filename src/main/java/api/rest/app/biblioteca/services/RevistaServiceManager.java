@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import api.rest.app.biblioteca.excepcion.NotFoundExcepcion;
 import api.rest.app.biblioteca.model.entity.Revista;
 import api.rest.app.biblioteca.repositories.RevistaRepository;
 
@@ -33,7 +34,7 @@ public class RevistaServiceManager implements RevistaService {
 
     @Override
     public Revista findById(Long id) {
-        return this.repository.findById(id).get();
+        return this.repository.findById(id).orElseThrow(()->new NotFoundExcepcion("No existe esta revista"));
     }
 
     @Override

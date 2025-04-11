@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import api.rest.app.biblioteca.excepcion.NotFoundExcepcion;
 import api.rest.app.biblioteca.model.entity.Usuario;
 import api.rest.app.biblioteca.repositories.UsuarioRepository;
 
@@ -21,7 +22,7 @@ public class UsuarioServiceManager implements UsuarioService {
 
     @Override
     public Usuario findById(String usuario) {
-       return this.repository.findById(usuario).get();
+       return this.repository.findById(usuario).orElseThrow(()->new NotFoundExcepcion("No existe este usuario"));
        
     }
 

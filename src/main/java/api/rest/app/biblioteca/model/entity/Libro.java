@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "libros")
 public class Libro extends Producto {
+    @Column(unique = true)
     private String isbn;
     @Column(nullable = false,length = 50)
     private String autor;

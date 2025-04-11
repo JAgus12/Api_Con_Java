@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import api.rest.app.biblioteca.excepcion.NotFoundExcepcion;
 import api.rest.app.biblioteca.model.entity.Libro;
 import api.rest.app.biblioteca.repositories.LibroRepository;
 
@@ -19,7 +20,7 @@ public class LibroServiceManager implements LibroService {
 
     @Override
     public Libro deleteById(Long id) {
-        Libro libroBorrado=this.repository.findById(id).get();
+        Libro libroBorrado=this.repository.findById(id).orElseThrow(()->new NotFoundExcepcion("No existe ese libro"));
         this.repository.deleteById(id);
         return libroBorrado;
     }
@@ -31,12 +32,13 @@ public class LibroServiceManager implements LibroService {
 
     @Override
     public Libro findById(Long id) {
-        return this.repository.findById(id).get();
+        return this.repository.findById(id).orElseThrow(()->new NotFoundExcepcion("EL libro con ese Id no existe"));
     }
 
     @Override
     public Libro save(Libro libro) {
         return this.repository.save(libro);
+       
     }
 
     @Override

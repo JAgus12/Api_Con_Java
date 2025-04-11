@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import api.rest.app.biblioteca.excepcion.NotFoundExcepcion;
 import api.rest.app.biblioteca.model.entity.Pelicula;
 import api.rest.app.biblioteca.repositories.PeliculaRepository;
 
@@ -29,7 +30,7 @@ public class PeliculaServiceManager implements PeliculaService {
 
     @Override
     public Pelicula findById(Long producto_id) {
-        return this.repository.findById(producto_id).get();
+        return this.repository.findById(producto_id).orElseThrow(()->new NotFoundExcepcion("No existe esa pelicula con ese id"));
     }
 
     @Override
