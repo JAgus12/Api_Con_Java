@@ -21,8 +21,11 @@ import api.rest.app.biblioteca.services.LibroServiceManager;
 @RequestMapping("/api/libros")
 public class LibroController {
 
-    @Autowired
     private LibroServiceManager serviceManager;
+    
+    public LibroController(LibroServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
+    }
 
     @GetMapping()
     @Transactional(readOnly = true)

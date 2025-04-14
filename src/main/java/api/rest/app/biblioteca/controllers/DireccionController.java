@@ -20,8 +20,11 @@ import api.rest.app.biblioteca.services.DireccionServiceManager;
 @RequestMapping("/api/direcciones")
 public class DireccionController {
 
-    @Autowired
-    private DireccionServiceManager serviceManager;
+    private final DireccionServiceManager serviceManager;
+
+    public DireccionController(DireccionServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
+    }
 
     @GetMapping()
     @Transactional(readOnly = true)

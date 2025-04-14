@@ -13,38 +13,38 @@ import api.rest.app.biblioteca.repositories.RevistaRepository;
 @Service
 public class RevistaServiceManager implements RevistaService {
 
-    private final RevistaRepository repository;
+    private final RevistaRepository revistaRepository;
 
 
     public RevistaServiceManager(RevistaRepository repository) {
-        this.repository = repository;
+        this.revistaRepository = repository;
     }
 
     @Override
     public Revista deleteById(Long id) {
-        Revista revistaBorrada = this.repository.findById(id).get();
-        this.repository.deleteById(id);
+        Revista revistaBorrada = this.revistaRepository.findById(id).get();
+        this.revistaRepository.deleteById(id);
         return revistaBorrada;
     }
 
     @Override
     public List<Revista> findAll() {
-        return (List<Revista>) this.repository.findAll();
+        return (List<Revista>) this.revistaRepository.findAll();
     }
 
     @Override
     public Revista findById(Long id) {
-        return this.repository.findById(id).orElseThrow(()->new NotFoundExcepcion("No existe esta revista"));
+        return this.revistaRepository.findById(id).orElseThrow(()->new NotFoundExcepcion("No existe esta revista"));
     }
 
     @Override
     public Revista save(Revista revista) {
-        return this.repository.save(revista);
+        return this.revistaRepository.save(revista);
     }
 
     @Override
     public Revista update(Long id, Revista revista) {
-        Revista revistaModificar = this.repository.findById(id).get();
+        Revista revistaModificar = this.revistaRepository.findById(id).get();
         revistaModificar.setCreatedBy(revista.getCreatedBy());
         revistaModificar.setDescripcion(revista.getDescripcion());
         revistaModificar.setEditorial(revista.getEditorial());
@@ -54,7 +54,7 @@ public class RevistaServiceManager implements RevistaService {
         revistaModificar.setTitulo(revista.getTitulo());
         revistaModificar.setUnidades(revista.getUnidades());
         revistaModificar.setUpdateBy(revista.getUpdateBy());
-        return this.repository.save(revistaModificar);
+        return this.revistaRepository.save(revistaModificar);
     }
 
     

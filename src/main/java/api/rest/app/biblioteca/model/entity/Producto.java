@@ -1,6 +1,10 @@
 package api.rest.app.biblioteca.model.entity;
 
 
+import java.util.List;
+
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +33,14 @@ public abstract class Producto extends BaseEntity {
 
     @Column(nullable = false)
     private String tipo;
+
+    @ManyToAny
+    @JoinTable(
+        name = "producto_genero",
+        joinColumns = @JoinColumn(name = "producto_id"),
+        inverseJoinColumns = @JoinColumn(name = "genero_id")
+    )
+    private List<Genero> generos;
 
 
     public Producto() {

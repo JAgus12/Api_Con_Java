@@ -20,8 +20,11 @@ import api.rest.app.biblioteca.services.AlquilerServiceManager;
 @RequestMapping("/api/alquileres")
 public class AlquilerController {
 
-    @Autowired
-    private AlquilerServiceManager serviceManager;
+    private final AlquilerServiceManager serviceManager;
+
+    public AlquilerController(AlquilerServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
+    }
 
     @GetMapping()
     @Transactional(readOnly = true)
@@ -31,7 +34,7 @@ public class AlquilerController {
 
     @GetMapping("/{alquiler_id}")
     @Transactional
-    public Alquiler findById(@PathVariable Long alquiler_id){
+    public Alquiler findAlquiler(@PathVariable Long alquiler_id){
         return this.serviceManager.findById(alquiler_id);
     }
 
@@ -43,7 +46,7 @@ public class AlquilerController {
 
     @DeleteMapping("/{alquiler_id}")
     @Transactional
-    public Alquiler deleteById(@PathVariable Long alquiler_id){
+    public Alquiler deleteAlquiler(@PathVariable Long alquiler_id){
         return this.serviceManager.deleteById(alquiler_id);
     }
 

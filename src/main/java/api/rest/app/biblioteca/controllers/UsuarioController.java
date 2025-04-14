@@ -20,8 +20,11 @@ import api.rest.app.biblioteca.services.UsuarioServiceManager;
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
 
-    @Autowired
     private UsuarioServiceManager serviceManager;
+    
+    public UsuarioController(UsuarioServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
+    }
 
     @GetMapping()
     @Transactional(readOnly = true)

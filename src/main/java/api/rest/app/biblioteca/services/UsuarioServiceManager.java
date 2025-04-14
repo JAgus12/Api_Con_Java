@@ -2,7 +2,6 @@ package api.rest.app.biblioteca.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import api.rest.app.biblioteca.excepcion.NotFoundExcepcion;
@@ -12,35 +11,38 @@ import api.rest.app.biblioteca.repositories.UsuarioRepository;
 @Service
 public class UsuarioServiceManager implements UsuarioService {
 
-    @Autowired
-    private UsuarioRepository repository;
+    private final UsuarioRepository usuarioRepository;
+
+    public UsuarioServiceManager(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
 
     @Override
     public List<Usuario> findAll() {
-        return (List<Usuario>) this.repository.findAll();
+        return (List<Usuario>) this.usuarioRepository.findAll();
     }
 
     @Override
     public Usuario findById(String usuario) {
-       return this.repository.findById(usuario).orElseThrow(()->new NotFoundExcepcion("No existe este usuario"));
+       return this.usuarioRepository.findById(usuario).orElseThrow(()->new NotFoundExcepcion("No existe este usuario"));
        
     }
 
     @Override
     public Usuario save(Usuario usuario) {
-        return this.repository.save(usuario);
+        return this.usuarioRepository.save(usuario);
     }
 
     @Override
     public Usuario deleteById(String usuario) {
-        Usuario usuarioborrado=this.repository.findById(usuario).get();
-        this.repository.deleteById(usuario);
+        Usuario usuarioborrado=this.usuarioRepository.findById(usuario).get();
+        this.usuarioRepository.deleteById(usuario);
         return usuarioborrado;
     }
 
     @Override
     public Usuario update(String usuario, Usuario user) {
-        Usuario usuarioModificar=this.repository.findById(usuario).get();
+        Usuario usuarioModificar=this.usuarioRepository.findById(usuario).get();
         usuarioModificar.setNombre(user.getNombre());
         usuarioModificar.setApellido1(user.getApellido1());
         usuarioModificar.setApellido2(user.getApellido2());
@@ -51,13 +53,13 @@ public class UsuarioServiceManager implements UsuarioService {
         usuarioModificar.setRol(user.getRol());
         usuarioModificar.setTelefono(user.getTelefono());
         usuarioModificar.setActivo(user.getActivo());
-        return this.repository.save(usuarioModificar);
+        return this.usuarioRepository.save(usuarioModificar);
 
     }
 
     @Override
     public Boolean existsById(String usuario) {
-        return this.repository.existsById(usuario);
+        return this.usuarioRepository.existsById(usuario);
     }
 
     

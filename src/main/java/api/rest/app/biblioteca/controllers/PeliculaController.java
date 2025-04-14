@@ -20,8 +20,11 @@ import api.rest.app.biblioteca.services.PeliculaServiceManager;
 @RequestMapping("/api/peliculas")
 public class PeliculaController {
 
-    @Autowired
     private PeliculaServiceManager serviceManager;
+    
+    public PeliculaController(PeliculaServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
+    }
 
     @GetMapping()
     @Transactional(readOnly = true)

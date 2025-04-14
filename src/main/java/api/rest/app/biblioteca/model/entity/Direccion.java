@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 public class Direccion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long direccion_id;
     @Column(nullable = false, length = 55)
     private String calle;

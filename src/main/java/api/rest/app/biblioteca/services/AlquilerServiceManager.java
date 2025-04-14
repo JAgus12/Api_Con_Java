@@ -12,37 +12,37 @@ import api.rest.app.biblioteca.repositories.AlquilerRepository;
 public class AlquilerServiceManager implements AlquilerService {
 
     @Autowired
-    private AlquilerRepository repository;
+    private AlquilerRepository alquilerRepository;
 
     @Override
     public Alquiler deleteById(Long id) {
-        Alquiler alquilerBorrado = this.repository.findById(id).get();
-        this.repository.deleteById(id);
+        Alquiler alquilerBorrado = this.alquilerRepository.findById(id).get();
+        this.alquilerRepository.deleteById(id);
         return alquilerBorrado;
     }
 
     @Override
     public List<Alquiler> findAll() {
-        return (List<Alquiler>) this.repository.findAll();
+        return (List<Alquiler>) this.alquilerRepository.findAll();
     }
 
     @Override
     public Alquiler findById(Long id) {
-        return this.repository.findById(id).get();
+        return this.alquilerRepository.findById(id).get();
     }
 
     @Override
     public Alquiler save(Alquiler alquiler) {
-        return this.repository.save(alquiler);
+        return this.alquilerRepository.save(alquiler);
     }
 
     @Override
     public Alquiler update(Long id, Alquiler alquiler) {
-        Alquiler alquilerModificar = this.repository.findById(id).get();
+        Alquiler alquilerModificar = this.alquilerRepository.findById(id).get();
         alquilerModificar.setFechaAlta(alquiler.getFechaAlta());
         alquilerModificar.setFechaFin(alquiler.getFechaFin());
         alquilerModificar.setProducto(alquiler.getProducto());
-        return this.repository.save(alquilerModificar);
+        return this.alquilerRepository.save(alquilerModificar);
     }
 
     
