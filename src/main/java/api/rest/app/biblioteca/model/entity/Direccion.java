@@ -25,7 +25,9 @@ public class Direccion {
     private String provincia;
     @Column(nullable = false, length = 40)
     private String municipio;
+    @Column(nullable = false,length = 20)
     private Integer cp;
+    @Column(nullable = false)
     private String ccaa;
     private String pais;
     @Column(nullable = true)
