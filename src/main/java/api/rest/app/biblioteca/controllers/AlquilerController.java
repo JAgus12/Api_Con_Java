@@ -55,4 +55,9 @@ public class AlquilerController {
     public Alquiler updateAlquiler(@PathVariable Long alquiler_id,@RequestBody Alquiler alquiler){
         return this.serviceManager.update(alquiler_id, alquiler);
     }
+
+    @GetMapping("/productosAlquilados/{producto_id}")
+    public int productosAlqulados(@PathVariable Long producto_id){
+        return this.serviceManager.countById(producto_id);
+    }
 }

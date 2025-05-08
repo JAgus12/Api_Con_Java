@@ -11,4 +11,5 @@ public interface AlquilerService {
     Alquiler save(Alquiler alquiler);
     Alquiler deleteById(Long id);
     Alquiler update(Long id,Alquiler alquiler);
+    int countById(Long producto_id);
 }

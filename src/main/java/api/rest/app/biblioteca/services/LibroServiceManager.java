@@ -7,16 +7,21 @@ import org.springframework.stereotype.Service;
 
 import api.rest.app.biblioteca.excepcion.NotFoundExcepcion;
 import api.rest.app.biblioteca.model.entity.Libro;
+import api.rest.app.biblioteca.repositories.AlquilerRepository;
 import api.rest.app.biblioteca.repositories.LibroRepository;
 
 @Service
 public class LibroServiceManager implements LibroService {
 
     private final LibroRepository libroRepository;
+    private final AlquilerRepository alquilerRepository;
 
-    public LibroServiceManager(LibroRepository libroRepository) {
+    
+    public LibroServiceManager(LibroRepository libroRepository, AlquilerRepository alquilerRepository) {
         this.libroRepository = libroRepository;
+        this.alquilerRepository = alquilerRepository;
     }
+
 
     @Override
     public Libro deleteById(Long id) {

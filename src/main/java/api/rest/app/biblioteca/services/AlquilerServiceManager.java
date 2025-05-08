@@ -45,5 +45,14 @@ public class AlquilerServiceManager implements AlquilerService {
         return this.alquilerRepository.save(alquilerModificar);
     }
 
+    @Override
+    public int countById(Long producto_id) {
+        return this.alquilerRepository.countByProductoId(producto_id);
+    }
+
+    
+
+   
+
     
 }

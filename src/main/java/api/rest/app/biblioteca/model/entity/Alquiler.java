@@ -29,7 +29,7 @@ public class Alquiler {
     private Producto producto;
 
     @OneToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario")
     private Usuario usuario;
 
     public Alquiler() {
