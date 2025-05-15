@@ -11,4 +11,6 @@ public interface DireccionService {
     Direccion save(Direccion direccion);
     Direccion deleteById(Long direccion_id);
     Direccion update(Long direccion_id,Direccion direccion);
+    Direccion buscarCasa(String calle,Integer numero,Integer cp);
+    Direccion buscarPiso(String calle,Integer numero,Integer cp,String puerta);
 }

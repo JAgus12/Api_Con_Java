@@ -54,4 +54,18 @@ public class DireccionServiceManager implements DireccionService {
     }
 
 
+    @Override
+    public Direccion buscarCasa(String calle, Integer numero, Integer cp) {
+        return this.direccionRepository.findCasa(calle, numero, cp);
+    }
+
+
+    @Override
+    public Direccion buscarPiso(String calle, Integer numero, Integer cp, String puerta) {
+        return this.direccionRepository.findPiso(calle, numero, cp, puerta);
+    }
+
+    
+
+
 }

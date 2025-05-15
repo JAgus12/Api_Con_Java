@@ -2,11 +2,20 @@ package api.rest.app.biblioteca.model.entity;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,12 +25,13 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     private String usuario;
     @Column(nullable = false)
     @Size(min = 8,message = "La contraseña debe tener minimo 8 caracteres")
+    @JsonIgnore
     private String password;
     @Column(nullable = false,length = 55)
     private String nombre;
@@ -38,7 +48,8 @@ public class Usuario {
     @Column(nullable = false)
     @CreationTimestamp
     private Timestamp fechaAlta;
-    private String rol="usuario";
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
     private boolean activo=true;
 
     @ManyToOne
@@ -51,10 +62,12 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String usuario, String contraseña, String nombre, String apellido1, String apellido2, String email,
-            String telefono, LocalDate fechaNacimiento, Timestamp fechaAlta, String rol, boolean activo) {
+    public Usuario(String usuario,
+            @Size(min = 8, message = "La contraseña debe tener minimo 8 caracteres") String password, String nombre,
+            String apellido1, String apellido2, String email, String telefono, LocalDate fechaNacimiento,
+            Timestamp fechaAlta, Rol rol, boolean activo, Direccion direccion, Alquiler alquiler) {
         this.usuario = usuario;
-        this.password = contraseña;
+        this.password = password;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -64,7 +77,11 @@ public class Usuario {
         this.fechaAlta = fechaAlta;
         this.rol = rol;
         this.activo = activo;
+        this.direccion = direccion;
+        this.alquiler = alquiler;
     }
+
+
 
 
     public String getUsuario() {
@@ -115,13 +132,6 @@ public class Usuario {
     public void setFechaAlta(Timestamp fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
     public boolean getActivo() {
         return activo;
     }
@@ -144,6 +154,53 @@ public class Usuario {
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public Alquiler getAlquiler() {
+        return alquiler;
+    }
+
+    public void setAlquiler(Alquiler alquiler) {
+        this.alquiler = alquiler;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(rol.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return this.usuario;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    
+
+    
+
+    
 
     
 }
