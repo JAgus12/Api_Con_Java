@@ -43,7 +43,7 @@ public class AuthService {
         user.setFechaNacimiento(request.getFechaNacimiento());
         user.setRol(Rol.USER);
         user.setTelefono(request.getTelefono());
-        user.setFechaAlta(new Timestamp(System.currentTimeMillis()));;
+        user.setFechaAlta(new Timestamp(System.currentTimeMillis()));
         // Direccion direccion;
         // if (request.getDireccion().getPuerta() == null) {
         //     direccion = this.direccionRepository.findCasa(request.getDireccion().getCalle(),
