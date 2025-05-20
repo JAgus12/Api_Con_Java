@@ -17,8 +17,8 @@ INSERT INTO direcciones (
 INSERT INTO usuarios (
     activo, fecha_alta, fecha_nacimiento, direccion_id, telefono, nombre, apellido1, apellido2, email, password, rol, usuario
 ) VALUES
-(1, '2025-04-07', '1988-05-15', 1, '654321987', 'Juan', 'Pérez', 'Gómez', 'juan.perez@example.com', 'hashed_password_1', 'cliente', 'juanperez'),
-(1, '2025-04-07', '1992-07-10', 2, '678945612', 'Ana', 'Sánchez', 'Martínez', 'ana.sanchez@example.com', 'hashed_password_2', 'cliente', 'anasanchez'),
+(1, '2025-04-07', '1988-05-15', 1, '654321987', 'Juan', 'Pérez', 'Gómez', 'juan.perez@example.com', 'hashed_password_1', 'ADMIN', 'juanperez')
+/* (1, '2025-04-07', '1992-07-10', 2, '678945612', 'Ana', 'Sánchez', 'Martínez', 'ana.sanchez@example.com', 'hashed_password_2', 'cliente', 'anasanchez'),
 (1, '2025-04-07', '1985-03-22', 3, '623456789', 'Carlos', 'Ramírez', 'López', 'carlos.ramirez@example.com', 'hashed_password_3', 'cliente', 'carlosramirez'),
 (1, '2025-04-07', '1995-06-30', 4, '612345678', 'Laura', 'González', 'Morales', 'laura.gonzalez@example.com', 'hashed_password_4', 'cliente', 'lauragonzalez'),
 (1, '2025-04-07', '1987-11-14', 5, '699876543', 'Pedro', 'Fernández', 'Gutiérrez', 'pedro.fernandez@example.com', 'hashed_password_5', 'cliente', 'pedrofernandez'),
@@ -26,7 +26,7 @@ INSERT INTO usuarios (
 (1, '2025-04-07', '1983-01-18', 7, '674323456', 'Javier', 'Álvarez', 'Castro', 'javier.alvarez@example.com', 'hashed_password_7', 'cliente', 'javieralvarez'),
 (1, '2025-04-07', '1989-10-02', 8, '665443211', 'María', 'López', 'Hernández', 'maria.lopez@example.com', 'hashed_password_8', 'cliente', 'marialopez'),
 (1, '2025-04-07', '1994-12-05', 9, '699123456', 'David', 'Martín', 'Vázquez', 'david.martin@example.com', 'hashed_password_9', 'cliente', 'davidmartin'),
-(1, '2025-04-07', '1991-02-28', 10, '677894321', 'Sofía', 'García', 'Muñoz', 'sofia.garcia@example.com', 'hashed_password_10', 'cliente', 'sofiagarcia');
+(1, '2025-04-07', '1991-02-28', 10, '677894321', 'Sofía', 'García', 'Muñoz', 'sofia.garcia@example.com', 'hashed_password_10', 'cliente', 'sofiagarcia'); */
 
 -- Direcciones
 

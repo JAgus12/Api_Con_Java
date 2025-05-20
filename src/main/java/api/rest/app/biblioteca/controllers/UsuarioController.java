@@ -2,6 +2,7 @@ package api.rest.app.biblioteca.controllers;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class UsuarioController {
         this.serviceManager = serviceManager;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping()
     @Transactional(readOnly = true)
     public List<Usuario> findAllUsuarios(){
