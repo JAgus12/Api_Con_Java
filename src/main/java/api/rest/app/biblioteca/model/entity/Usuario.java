@@ -186,6 +186,12 @@ public class Usuario implements UserDetails {
         return true;
     }
 
+
+    @Override
+    public boolean isEnabled() {
+        return this.activo;
+    }
+
     @Override
     public boolean isAccountNonLocked() {
         return true;
@@ -195,6 +201,7 @@ public class Usuario implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
 
     
 
