@@ -16,15 +16,17 @@ public class RegisterRequest {
     private String telefono;
     private LocalDate fechaNacimiento;
     private Direccion direccion;
-    private Timestamp fecha_alta;
     
     
     public RegisterRequest() {
     }
 
 
+    
+
+
     public RegisterRequest(String usuario, String password, String nombre, String apellido1, String apellido2,
-            String email, String telefono, LocalDate fechaNacimiento, Direccion direccion, Timestamp fecha_alta) {
+            String email, String telefono, LocalDate fechaNacimiento, Direccion direccion) {
         this.usuario = usuario;
         this.password = password;
         this.nombre = nombre;
@@ -34,8 +36,10 @@ public class RegisterRequest {
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
-        this.fecha_alta = fecha_alta;
     }
+
+
+
 
 
     public String getUsuario() {
@@ -125,15 +129,6 @@ public class RegisterRequest {
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
-    }
-
-    public Timestamp getFecha_alta() {
-        return fecha_alta;
-    }
-
-
-    public void setFecha_alta(Timestamp fecha_alta) {
-        this.fecha_alta = fecha_alta;
     }
 
     

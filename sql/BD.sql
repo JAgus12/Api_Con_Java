@@ -79,3 +79,7 @@ INSERT INTO alquileres (
 
 
 
+//{
+  "usuario": "brais",
+  "password": "miContrasenaSegura"
+}
