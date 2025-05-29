@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "productos")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Producto extends BaseEntity {
+public class Producto extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,6 @@ package api.rest.app.biblioteca.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import api.rest.app.biblioteca.Dto.AlquilerDto;
 import api.rest.app.biblioteca.model.entity.Alquiler;
 import api.rest.app.biblioteca.services.AlquilerServiceManager;
 
@@ -40,7 +40,7 @@ public class AlquilerController {
 
     @PostMapping()
     @Transactional
-    public Alquiler save(@RequestBody Alquiler alquiler){
+    public Alquiler save(@RequestBody AlquilerDto alquiler){
         return this.serviceManager.save(alquiler);
     }
 

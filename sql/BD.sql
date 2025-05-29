@@ -70,7 +70,7 @@ VALUES
 INSERT INTO alquileres (
     alquiler_id, fecha_alta, fecha_fin, producto_id, usuario
 ) VALUES
-(1, '2025-04-07 10:30:00', '2025-04-14 10:30:00', 1, 'juanperez'), -- Alquiler de Película 1 por Juan Pérez
+(1, '2025-04-07 10:30:00', '2025-04-14 10:30:00', 1, 'brais'), -- Alquiler de Película 1 por Juan Pérez
 (2, '2025-04-08 14:00:00', '2025-04-15 14:00:00', 1, 'anasanchez'), -- Alquiler de Película 1 por Ana Sánchez
 (3, '2025-04-09 09:00:00', '2025-04-16 09:00:00', 1, 'carlosramirez'), -- Alquiler de Película 1 por Carlos Ramírez
 (4, '2025-04-07 16:30:00', '2025-04-14 16:30:00', 2, 'lauragonzalez'), -- Alquiler de Película 2 por Laura González

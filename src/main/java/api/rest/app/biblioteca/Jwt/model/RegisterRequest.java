@@ -1,6 +1,5 @@
 package api.rest.app.biblioteca.Jwt.model;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 
 import api.rest.app.biblioteca.model.entity.Direccion;

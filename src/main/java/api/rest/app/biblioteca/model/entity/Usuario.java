@@ -56,8 +56,6 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "direccion_id")
     private Direccion direccion;
 
-    @OneToOne(mappedBy = "usuario")
-    private Alquiler alquiler;
 
     public Usuario() {
     }
@@ -65,7 +63,7 @@ public class Usuario implements UserDetails {
     public Usuario(String usuario,
             @Size(min = 8, message = "La contraseña debe tener minimo 8 caracteres") String password, String nombre,
             String apellido1, String apellido2, String email, String telefono, LocalDate fechaNacimiento,
-            Timestamp fechaAlta, Rol rol, boolean activo, Direccion direccion, Alquiler alquiler) {
+            Timestamp fechaAlta, Rol rol, boolean activo, Direccion direccion) {
         this.usuario = usuario;
         this.password = password;
         this.nombre = nombre;
@@ -78,7 +76,6 @@ public class Usuario implements UserDetails {
         this.rol = rol;
         this.activo = activo;
         this.direccion = direccion;
-        this.alquiler = alquiler;
     }
 
 
@@ -163,13 +160,6 @@ public class Usuario implements UserDetails {
         this.rol = rol;
     }
 
-    public Alquiler getAlquiler() {
-        return alquiler;
-    }
-
-    public void setAlquiler(Alquiler alquiler) {
-        this.alquiler = alquiler;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

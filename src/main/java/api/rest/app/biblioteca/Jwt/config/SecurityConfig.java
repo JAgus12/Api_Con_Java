@@ -56,10 +56,7 @@ public CorsConfigurationSource corsConfigurationSource() {
             .authorizeHttpRequests(authRequest ->
                 authRequest
                     .requestMatchers("/auth/**").permitAll()
-                    .requestMatchers("/api/usuarios/**").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.GET, "/api/libros/**").hasAnyRole("ADMIN", "USER")
-                    .requestMatchers("/api/libros/**").hasRole("ADMIN")
-                    .anyRequest().authenticated()
+                    .anyRequest().permitAll()
             )
             .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authProvider)

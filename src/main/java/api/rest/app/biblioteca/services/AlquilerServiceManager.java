@@ -1,18 +1,32 @@
 package api.rest.app.biblioteca.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import api.rest.app.biblioteca.Dto.AlquilerDto;
 import api.rest.app.biblioteca.model.entity.Alquiler;
+import api.rest.app.biblioteca.model.entity.Producto;
+import api.rest.app.biblioteca.model.entity.Usuario;
 import api.rest.app.biblioteca.repositories.AlquilerRepository;
+import api.rest.app.biblioteca.repositories.ProductoRepository;
+import api.rest.app.biblioteca.repositories.UsuarioRepository;
 
 @Service
 public class AlquilerServiceManager implements AlquilerService {
 
-    @Autowired
     private AlquilerRepository alquilerRepository;
+    private ProductoRepository productoRepository;
+    private UsuarioRepository usuarioRepository;
+
+    
+    public AlquilerServiceManager(AlquilerRepository alquilerRepository, ProductoRepository productoRepository,
+            UsuarioRepository usuarioRepository) {
+        this.alquilerRepository = alquilerRepository;
+        this.productoRepository = productoRepository;
+        this.usuarioRepository = usuarioRepository;
+    }
 
     @Override
     public Alquiler deleteById(Long id) {
@@ -32,8 +46,15 @@ public class AlquilerServiceManager implements AlquilerService {
     }
 
     @Override
-    public Alquiler save(Alquiler alquiler) {
-        return this.alquilerRepository.save(alquiler);
+    public Alquiler save(AlquilerDto alquiler) {
+        Producto producto=this.productoRepository.findById(alquiler.getProductoId()).get();
+        Usuario usuario=this.usuarioRepository.findById(alquiler.getUsuario()).get();
+        Alquiler newAlquiler=new Alquiler();
+        newAlquiler.setProducto(producto);
+        newAlquiler.setUsuario(usuario);
+        newAlquiler.setFechaAlta(new Timestamp(System.currentTimeMillis()));
+        newAlquiler.setFechaFin(newAlquiler.getFechaAlta());
+        return this.alquilerRepository.save(newAlquiler);
     }
 
     @Override
