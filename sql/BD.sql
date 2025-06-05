@@ -1,3 +1,4 @@
+-- Active: 1744285010485@@127.0.0.1@3306@biblioteca
 INSERT INTO direcciones (
     direccion_id, cp, numero, municipio, provincia, calle, ccaa, pais, puerta
 ) VALUES
@@ -34,37 +35,42 @@ INSERT INTO usuarios (
 
 INSERT INTO productos (unidades, fecha_alta, fecha_modificacion,titulo, descripcion, created_by, tipo, update_by)
 VALUES 
-(50, NOW(), NOW(),'Inception', 'Cine de ciencia ficción sobre sueños.', 'admin', 'pelicula', 'admin'),
-(75, NOW(), NOW(),'The Dark Knight', 'Batman lucha contra el crimen.', 'admin', 'pelicula', 'admin'),
-(100, NOW(), NOW(),'Interstellar', 'Viaje espacial para salvar la humanidad.', 'admin', 'pelicula', 'admin'),
-(120, NOW(), NOW(),'National Geographic', 'Revista de ciencia y naturaleza.', 'admin', 'revista', 'admin'),
-(80, NOW(), NOW(),'Time', 'Revista de noticias y política.', 'admin', 'revista', 'admin'),
-(150, NOW(), NOW(),'Sports Illustrated', 'Revista sobre deportes populares.', 'admin', 'revista', 'admin'),
-(200, NOW(), NOW(),'The Great Gatsby', 'Historia de la decadencia en los años 20.', 'admin', 'libro', 'admin'),
-(180, NOW(), NOW(),'To Kill a Mockingbird', 'Lucha contra la injusticia racial.', 'admin', 'libro', 'admin'),
-(220, NOW(), NOW(),'1984', 'Sociedad totalitaria y control social.', 'admin', 'libro', 'admin');
+(2, NOW(), NOW(),'Inception', 'Cine de ciencia ficción sobre sueños.', 'admin', 'pelicula', 'admin'),
+(1, NOW(), NOW(),'The Dark Knight', 'Batman lucha contra el crimen.', 'admin', 'pelicula', 'admin'),
+(5, NOW(), NOW(),'Interstellar', 'Viaje espacial para salvar la humanidad.', 'admin', 'pelicula', 'admin');
+
+INSERT INTO productos (unidades, fecha_alta, fecha_modificacion,titulo, descripcion, created_by, tipo, update_by)
+VALUES 
+(1, NOW(), NOW(),'National Geographic', 'Revista de ciencia y naturaleza.', 'admin', 'revista', 'admin'),
+(2, NOW(), NOW(),'Time', 'Revista de noticias y política.', 'admin', 'revista', 'admin'),
+(1, NOW(), NOW(),'Sports Illustrated', 'Revista sobre deportes populares.', 'admin', 'revista', 'admin');
+INSERT INTO productos (unidades, fecha_alta, fecha_modificacion,titulo, descripcion, created_by, tipo, update_by)
+VALUES 
+(1, NOW(), NOW(),'The Great Gatsby', 'Historia de la decadencia en los años 20.', 'admin', 'libro', 'admin'),
+(4, NOW(), NOW(),'To Kill a Mockingbird', 'Lucha contra la injusticia racial.', 'admin', 'libro', 'admin'),
+(2, NOW(), NOW(),'1984', 'Sociedad totalitaria y control social.', 'admin', 'libro', 'admin');
 
 -- Insertar detalles de películas
 INSERT INTO peliculas (producto_id, duracion, director, productor, anho)
 VALUES 
-(1, '148 min', 'Christopher Nolan', 'Emma Thomas', '2010'),
-(2, '152 min', 'Christopher Nolan', 'Charles Roven', '2008'),
-(3, '169 min', 'Christopher Nolan', 'Lynda Obst', '2014');
+(29, '148 min', 'Christopher Nolan', 'Emma Thomas', '2010'),
+(30, '152 min', 'Christopher Nolan', 'Charles Roven', '2008'),
+(31, '169 min', 'Christopher Nolan', 'Lynda Obst', '2014');
 
 -- Insertar detalles de libros
 INSERT INTO libros (producto_id, editorial, autor, isbn)
 VALUES 
-(7, 'Scribner', 'F. Scott Fitzgerald', '9780743273565'),
-(8, 'J.B. Lippincott & Co.', 'Harper Lee', '9780061120084'),
-(9, 'Secker & Warburg', 'George Orwell', '9780451524935');
+(35, 'Scribner', 'F. Scott Fitzgerald', '9780743273565'),
+(36, 'J.B. Lippincott & Co.', 'Harper Lee', '9780061120084'),
+(37, 'Secker & Warburg', 'George Orwell', '9780451524935');
 
 
 -- Insertar detalles de revistas
 INSERT INTO revistas (producto_id, editorial)
 VALUES 
-(4, 'National Geographic Society'),
-(5, 'Time Inc.'),
-(6, 'Meredith Corporation');
+(32, 'National Geographic Society'),
+(33, 'Time Inc.'),
+(34, 'Meredith Corporation');
 
 -- Alquileres
 INSERT INTO alquileres (

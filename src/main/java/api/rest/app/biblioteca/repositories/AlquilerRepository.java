@@ -10,5 +10,8 @@ public interface AlquilerRepository extends CrudRepository<Alquiler,Long> {
     @Query( value = "SELECT COUNT(*) FROM Alquileres WHERE producto_id=?1",nativeQuery = true)
     int countByProductoId(Long producto_id);
 
+    @Query(value = "SELECT * FROM Alquileres WHERE usuario=?1",nativeQuery = true)
+    Alquiler findAlquilerUsuario(String usuario);
+
     
 }

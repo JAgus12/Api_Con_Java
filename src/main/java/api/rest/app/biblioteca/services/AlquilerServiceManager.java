@@ -1,6 +1,8 @@
 package api.rest.app.biblioteca.services;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -53,7 +55,8 @@ public class AlquilerServiceManager implements AlquilerService {
         newAlquiler.setProducto(producto);
         newAlquiler.setUsuario(usuario);
         newAlquiler.setFechaAlta(new Timestamp(System.currentTimeMillis()));
-        newAlquiler.setFechaFin(newAlquiler.getFechaAlta());
+        LocalDateTime fechaFin=newAlquiler.getFechaAlta().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().plusMonths(1);
+        newAlquiler.setFechaFin(Timestamp.valueOf(fechaFin));
         return this.alquilerRepository.save(newAlquiler);
     }
 
@@ -69,6 +72,11 @@ public class AlquilerServiceManager implements AlquilerService {
     @Override
     public int countById(Long producto_id) {
         return this.alquilerRepository.countByProductoId(producto_id);
+    }
+
+    @Override
+    public Alquiler findAlquilerUsuario(String usuario) {
+        return this.alquilerRepository.findAlquilerUsuario(usuario);
     }
 
     

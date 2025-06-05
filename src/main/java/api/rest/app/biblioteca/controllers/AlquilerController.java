@@ -38,6 +38,12 @@ public class AlquilerController {
         return this.serviceManager.findById(alquiler_id);
     }
 
+    @GetMapping("/usuario/{usuario}")
+    @Transactional
+    public Alquiler findAlquilerUsuario(@PathVariable String usuario){
+        return this.serviceManager.findAlquilerUsuario(usuario);
+    }
+
     @PostMapping()
     @Transactional
     public Alquiler save(@RequestBody AlquilerDto alquiler){
